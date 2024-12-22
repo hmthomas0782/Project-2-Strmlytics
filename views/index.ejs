@@ -1,0 +1,26 @@
+const express = require('express');
+const router = express.Router();
+const authController = require('../controllers/auth');
+
+// Landing Page Route
+router.get('/', (req, res) => {
+  res.render('landing');  // You can have a landing page here
+});
+
+// Login Route
+router.get('/login', (req, res) => {
+  res.render('login');  // Login page
+});
+
+// Forgot Password Route
+router.get('/forgot-password', (req, res) => {
+  res.render('forgot-password');  // Forgot password page
+});
+
+// Sign Up Route
+router.get('/sign-up', (req, res) => {
+  res.render('sign-up');  // Sign-up page
+});
+
+// Handle Form Submissions for Login, Sign Up, and Password Reset...
+module.exports = router;

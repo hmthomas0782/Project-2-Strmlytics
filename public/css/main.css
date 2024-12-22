@@ -1,158 +1,98 @@
-/* styles.css */
+/* Global Reset */
 body {
-  background-color: black;
-  color: white;
-  font-family: 'Arial', sans-serif;
   margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #1db954, #191414);
+  color: #fff;
 }
 
-header {
-  text-align: center;
-  padding: 20px;
-}
-
-#title h1 {
-  font-size: 80px;
-  font-family: 'Impact', sans-serif;
-  color: teal;
-  margin: 0;
-}
-
-#navbar ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 20px 0;
-}
-
-#navbar ul li {
-  display: inline;
-  margin: 0 20px;
-}
-
-#navbar ul li a {
-  text-decoration: none;
-  color: teal;
-  font-weight: bold;
-  font-size: 18px;
-  transition: all 0.3s ease;
-}
-
-#navbar ul li a:hover {
-  color: white;
-  text-decoration: underline;
-}
-
-.login-box {
-  width: 300px;
-  margin: 100px auto;
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
+h1, h2, h3 {
+  font-weight: 700;
   text-align: center;
 }
 
-.login-box h2 {
-  margin-bottom: 20px;
-  color: black;
-}
-
-.textbox input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
+input, button {
+  display: block;
+  margin: 15px auto;
+  padding: 12px 20px;
+  font-size: 16px;
   border: none;
-  background-color: #f4f4f4;
-  color: black;
-  border-radius: 5px;
+  border-radius: 8px;
+}
+
+input {
+  width: 80%;
+  background: #eee;
+  color: #191414;
 }
 
 button {
-  width: 100%;
-  padding: 10px;
-  background-color: teal;
+  width: 60%;
+  background: #000000;
   color: white;
-  border: none;
-  border-radius: 5px;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 button:hover {
-  background-color: #006f6f;
+  background: #1aa34a;
 }
 
-footer {
-  text-align: center;
+/* Form Styling */
+.release-form {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  margin: 50px auto;
+}
+
+.release-form h2 {
+  color: #1db954;
+}
+
+/* Chart Styling */
+.chart-container {
+  max-width: 80%;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+/* Dashboard Metrics */
+.metrics {
+  display: flex;
+  justify-content: space-around;
   margin-top: 20px;
-  padding: 10px 0;
-  background-color: #000;
-  color: white;
-  font-size: 14px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
 }
-/* Global styles */
-body {
-  background-color: black;
-  color: white;
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
+
+.metrics div {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   text-align: center;
 }
 
-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
-
-.main-title {
-  font-size: 120px; /* XLarge size */
-  font-family: 'Impact', sans-serif;
-  color: teal;
-  margin: 0;
-  animation: slideIn 2s ease-out;
-}
-
-.slogan {
+.metrics div h3 {
   font-size: 24px;
-  color: white;
-  margin-top: 20px;
-  font-style: italic;
+  margin-bottom: 10px;
 }
 
-/* Animation for title */
-@keyframes slideIn {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+.metrics div p {
+  font-size: 18px;
+  color: #ddd;
 }
 
-footer {
-  text-align: center;
-  margin-top: 20px;
-  padding: 10px 0;
-  background-color: #000;
-  color: white;
-  font-size: 14px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  input, button {
+    width: 90%;
+  }
+  .metrics {
+    flex-direction: column;
+    gap: 20px;
+  }
 }
