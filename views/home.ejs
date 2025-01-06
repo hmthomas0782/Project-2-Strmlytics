@@ -1,19 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home - STRYMLYTICS</title>
-  <link rel="stylesheet" href="/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>strmltyics | Welcome</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 50px;
+        }
+
+        .logo h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .cta {
+            margin-top: 20px;
+        }
+
+        .cta button {
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta button:hover {
+            background-color: #0056b3;
+        }
+
+        .signup {
+            margin-top: 40px;
+            color: #ccc;
+        }
+
+        .signup a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .signup a:hover {
+            text-decoration: underline;
+        }
+
+        .learn-more {
+            margin-top: 10px;
+            color: #007BFF;
+            cursor: pointer;
+        }
+
+        .learn-more:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1 class="main-title">STRYMLYTICS</h1>
-    <p class="slogan">Your Vibe, Your Data</p>
-  </header>
+    <div class="container">
+        <div class="logo">
+            <img src="STRMLYTICS LOGO.png" alt="Strymlytics Logo">
+            <h1>STRMYLYTIC</h1>
+        </div>
+        <h2>Welcome to STRMLYTICS. </h2>
+        <p>Track your releases and dive into the insights you need.</p>
 
-  <footer>
-    <p>STRYMLYTICS Copyright 2024</p>
-  </footer>
+        <div class="cta">
+            <a href="signup.html">
+                <button>Let's Get Started</button>
+            </a>
+        </div>
+
+        <div class="signup">
+            Already Registered? <a href="login.html">Login</a>
+        </div>
+
+        <div class="learn-more">
+            Learn More
+        </div>
+    </div>
 </body>
 </html>

@@ -1,11 +1,111 @@
-<%- include('../partials/header.ejs') %>
+<div class="container">
+    <div class="signup-box">
+        <h2>Create New Account</h2>
+        <p>Already Registered? <a href="/login">Login</a></p>
 
-<form action="/auth/sign-in" method="POST">
-  <label for="username">Username:</label>
-  <input type="text" name="username" id="username" />
-  <label for="password">Password:</label>
-  <input type="password" name="password" id="password" />
-  <button type="submit">SIGN IN</button>
-</form>
+        <form action="/signup" method="POST">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required placeholder="Enter your name">
+            </div>
 
-<%- include('../partials/footer.ejs')%>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="Enter your password">
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <select id="dob" name="dob" required>
+                    <option value="" disabled selected>Select</option>
+                    <!-- Options for dates-->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Sign Up</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+  body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #000;
+      color: #fff;
+  }
+
+  .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+  }
+
+  .signup-box {
+      background-color: #333;
+      border-radius: 10px;
+      padding: 30px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  h2 {
+      margin: 0 0 20px;
+      font-size: 1.8rem;
+  }
+
+  .form-group {
+      margin-bottom: 20px;
+  }
+
+  .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+  }
+
+  .form-group input, .form-group select {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+  }
+
+  .form-group button {
+      background-color: #007BFF;
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+  }
+
+  .form-group button:hover {
+      background-color: #0056b3;
+  }
+
+  a {
+      color: #007BFF;
+      text-decoration: none;
+  }
+
+  a:hover {
+      text-decoration: underline;
+  }
+</style>
+
+

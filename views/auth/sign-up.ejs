@@ -1,13 +1,242 @@
-<%- include('../partials/header.ejs') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strymlytics | Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-<form action="/auth/sign-up" method="POST">
-  <label for="username">Username:</label>
-  <input type="text" name="username" id="username" />
-  <label for="password">Password:</label>
-  <input type="password" name="password" id="password" />
-  <label for="confirmPassword">Confirm Password:</label>
-  <input type="password" name="confirmPassword" id="confirmPassword" />
-  <button type="submit">SIGN UP</button>
-</form>
+        .login-container {
+            background-color: #1c1c1c;
+            border-radius: 8px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
 
-<%- include('../partials/footer.ejs')%>
+        .login-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .login-form label {
+            font-size: 0.9rem;
+            color: #ccc;
+            display: block;
+            margin-top: 15px;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        .login-form input:focus {
+            outline: none;
+            border: 1px solid #007BFF;
+        }
+
+        .login-form button {
+            width: 100%;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .forgot-password a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>Login</h1>
+        </div>
+        <form class="login-form" id="loginForm">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <button type="submit">Sign In</button>
+        </form>
+        <div class="forgot-password">
+            <a href="#">Forgot your password?</a>
+        </div>
+    </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const dob = document.getElementById('dob').value;
+
+            console.log('Login details:', { name, email, password, dob });
+
+            alert('Logged in successfully!');
+        });
+    </script>
+</body>
+</html>
+<div class="container">
+  <div class="logo">
+      <img src="/images/STRMLYTICS LOGO.png" alt="Strymlytics Logo">
+      <h1>strmltyics.</h1>
+  </div>
+  <h2>Login</h2>
+  <form action="/login" method="POST">
+      <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="Enter your email">
+      </div>
+      <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required placeholder="Enter your password">
+      </div>
+      <div class="form-group">
+          <button type="submit">Login</button>
+      </div>
+  </form>
+  <p class="signup">Don't have an account? <a href="/signup">Sign up</a></p>
+</div>
+
+<%- include('partials/footer') %>
+
+<style>
+  body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #000;
+      color: #fff;
+  }
+
+  .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 20px;
+  }
+
+  .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+  }
+
+  .logo img {
+      width: 50px;
+  }
+
+  .logo h1 {
+      font-size: 2.5rem;
+      margin: 0;
+  }
+
+  .form-group {
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 400px;
+  }
+
+  .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+  }
+
+  .form-group input {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+  }
+
+  .form-group button {
+      background-color: #007BFF;
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+  }
+
+  .form-group button:hover {
+      background-color: #0056b3;
+  }
+
+  .signup {
+      margin-top: 20px;
+      color: #ccc;
+  }
+
+  .signup a {
+      color: #007BFF;
+      text-decoration: none;
+  }
+
+  .signup a:hover {
+      text-decoration: underline;
+  }
+</style>
