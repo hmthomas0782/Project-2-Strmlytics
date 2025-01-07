@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const Release =require("../models/release")
 
 // GET /releases/new - Show form to add a new release
 router.get('/new', (req, res) => {
@@ -7,10 +8,10 @@ router.get('/new', (req, res) => {
 });
 
 // POST /releases - Add releases / tracklisting
-router.post('/', (req, res) => {
-  const { title, artist, date, type } = req.body;
-  releases.push({ title, artist, date, type });
-  res.redirect('/dashboard'); // Redirect back 
+router.post('/', async (req, res) => {
+    req.body.artistId = req.user._id;  
+    await Release.create(req.body)
+  res.redirect('/'); // Redirect back 
 });
 
 // GET /dashboard - Display track releases
