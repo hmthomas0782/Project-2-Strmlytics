@@ -96,7 +96,7 @@
         <div class="login-header">
             <h1>Login</h1>
         </div>
-        <form class="login-form" id="loginForm">
+        <form class="login-form" action="/auth/sign-up" method="POST" id="loginForm"> 
             <label for="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Enter your name" required>
 
@@ -107,37 +107,22 @@
             <input type="password" id="password" name="password" placeholder="Enter your password" required>
 
             <label for="dob">Date of Birth</label>
-            <input type="date" id="dob" name="dob" required>
+            <input type="date" id="dob" name="dob">
 
-            <button type="submit">Sign In</button>
+            <button type="submit">Sign Up</button>
         </form>
         <div class="forgot-password">
             <a href="#">Forgot your password?</a>
         </div>
     </div>
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const dob = document.getElementById('dob').value;
-
-            console.log('Login details:', { name, email, password, dob });
-
-            alert('Logged in successfully!');
-        });
-    </script>
-</body>
-</html>
+    
 <div class="container">
   <div class="logo">
       <img src="/images/STRMLYTICS LOGO.png" alt="Strymlytics Logo">
       <h1>strmltyics.</h1>
   </div>
   <h2>Login</h2>
-  <form action="/login" method="POST">
+  <form action="/auth/sign-in" method="POST">
       <div class="form-group">
           <label for="email">Email</label>
           <input type="email" id="email" name="email" required placeholder="Enter your email">
@@ -150,10 +135,10 @@
           <button type="submit">Login</button>
       </div>
   </form>
-  <p class="signup">Don't have an account? <a href="/signup">Sign up</a></p>
+  <p class="signup">Don't have an account? <a href="/auth/sign-up">Sign up</a></p>
 </div>
 
-<%- include('partials/footer') %>
+<%- include('../partials/footer') %>
 
 <style>
   body {

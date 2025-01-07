@@ -20,7 +20,7 @@ router.get('/sign-out', (req, res) => {
 // POST /auth/sign-up (create a user)
 router.post('/sign-up', async (req, res) => {
   try {
-    if (req.body.password !== req.body.confirmPassword) throw new Error('Passwords do not match');
+    // if (req.body.password !== req.body.confirmPassword) throw new Error('Passwords do not match');
     req.body.password = bcrypt.hashSync(req.body.password, 6);
     const user = await User.create(req.body);
     req.session.user_id = user._id;
@@ -40,7 +40,7 @@ router.get('/sign-in', (req, res) => {
 // POST /auth/sign-in (sign in a user)
 router.post('/sign-in', async (req, res) => {
   try {
-    const user = await User.findOne({ username: req.body.username });
+    const user = await User.findOne({ email: req.body.email });
     if (!user) throw new Error('Invalid username');
     // Verify the password
     const valid = bcrypt.compareSync(req.body.password, user.password);
