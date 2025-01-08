@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
 
 // GET /dashboard - Display track releases
 router.get('/dashboard', (req, res) => {
-  res.render('dashboard', { releases, title: 'My Dashboard' });
+  res.render('dashboard', { releases, title: 'My Releases' });
 });
 
 module.exports = router;

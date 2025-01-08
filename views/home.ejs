@@ -85,7 +85,7 @@
     </style>
 </head>
 <body>
-  <%-include("./partials/header") %>
+  <%- include('./partials/header') %>
     <div class="container">
         <div class="logo">
             <img src="logo-placeholder.png" alt="Strymlytics Logo">
@@ -95,7 +95,7 @@
         <p>Track your releases and dive into the insights you need.</p>
 
         <div class="cta">
-            <a href="signup.html">
+            <a href="/auth/sign-up">
                 <button>Let's Get Started</button>
             </a>
         </div>
@@ -109,4 +109,5 @@
         </div>
     </div>
 </body>
+<%- include('./partials/footer') %>
 </html>
