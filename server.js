@@ -64,6 +64,6 @@ app.use(require('./middleware/ensure-signed-in'));
 
 app.use('/releases', require('./controllers/releases'));
 
-app.listen(port, () => {
+app.listen(port,  () => {
   console.log(`The express app is ready on port ${port}!`);
 });
