@@ -1,36 +1,68 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Release =require("../models/release")
+const Release = require("../models/Release");
 
-// GET /releases/new - Show form to add a new release
-router.get('/new', (req, res) => {
-  res.render('releases/new.ejs', { title: 'Add Release' });
+//GET ROUTES//
+
+// Index List All Releases
+router.get("/", async (req, res) => {
+  const releases = await Release.find();
+  res.render("releases/index", { releases });
 });
 
-// POST /releases - Add releases / tracklisting
-router.post('/', async (req, res) => {
-    req.body.artistId = req.user._id;  
-    await Release.create(req.body)
-  res.redirect('/'); // Redirect back 
+// Show release deets
+router.get("/:id", async (req, res) => {
+  const release = await Release.findById(req.params.id);
+  res.render("releases/show", { release });
 });
 
-// GET /show - List releases
-router.get('/', async (req, res) => {
-try{
-
-
-    // Find the updated list of releases
-    const releases = await Release.find({}); // Assuming you have a method to fetch all releases
-
-    // Render the dashboard with updated data
-    res.render('show', { releases, title: 'My Releases' });
-  } catch (error) {
-    console.error('Error in GET / route:', error.message);
-    res.status(500).send('An error occurred while processing your request.');
-  }
+// Edit forms
+router.get("/:id/edit", async (req, res) => {
+  const release = await Release.findById(req.params.id);
+  res.render("releases/edit", { release });
 });
 
-//PUT /
+// Delete ( Delete Confirmation)
+router.get("/:id/delete", async (req, res) => {
+  const release = await Release.findById(req.params.id);
+  res.render("releases/delete", { release });
+});
 
+//POST ROUTES //
+
+// Create a new release
+router.post("/", async (req, res) => {
+  await new Release({
+    title: req.body.title,
+    numStreams: req.body.numStreams,
+    targetAge: req.body.targetAge,
+    releaseDate: req.body.releaseDate,
+  }).save();
+  res.redirect("/releases");
+});
+
+/* ------------------ PUT ROUTES ------------------ */
+
+// Update existing release
+router.put("/:id", async (req, res) => {
+  await Release.findByIdAndUpdate(req.params.id, {
+    title: req.body.title,
+    numStreams: req.body.numStreams,
+    targetAge: req.body.targetAge,
+    releaseDate: req.body.releaseDate,
+  });
+  res.redirect("/releases");
+});
+
+/* - DELETE ROUTES ------------------ */
+
+// Delete a Release
+router.delete("/:id", async (req, res) => {
+  await Release.findByIdAndDelete(req.params.id);
+  res.redirect("/releases");
+});
 
 module.exports = router;
+
+
+

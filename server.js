@@ -53,7 +53,6 @@ app.get('/', (req, res) => {
 app.use('/auth', require('./controllers/auth'));
 
 
-
 // Any requests that get this far must have a signed in 
 // user thanks to ensureSignedIn middleware
 app.use(require('./middleware/ensure-signed-in'));
@@ -62,8 +61,8 @@ app.use(require('./middleware/ensure-signed-in'));
 
 
 
-
+app.use('/releases', require('./controllers/releases'));
 
 app.listen(port,  () => {
   console.log(`The express app is ready on port ${port}!`);
-})
+});

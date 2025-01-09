@@ -1,18 +1,25 @@
-<%- include('../partials/header') %>
+<%- include("../partials/header.ejs") %>
 
-  <form action="/releases/<%= release.id %>" method="POST">
-    <label for="title">Title:</label>
-    <input type="text" id="title" name="title" value="<%= release.title %>" required>
-    
-    <label for="artist">Artist:</label>
-    <input type="text" id="artist" name="artist" value="<%= release.artist %>" required>
-    
-    <label for="date">Release Date:</label>
-    <input type="date" id="date" name="date" value="<%= release.date %>" required>
-    
-    <button type="submit">Update Release</button>
-  </form>
-</div>
+<h1>Edit Release</h1>
 
-<%- include('../partials/footer') %>
+<form action="/releases/<%= release._id %>?_method=PUT" method="POST">
+  <label for="title">TITLE</label>
+  <input type="text" name="title" id="title" value="<%= release.title %>" required>
+
+  <label for="numStreams"># STREAMS</label>
+  <input type="number" name="numStreams" id="numStreams" value="<%= release.numStreams %>" required>
+
+  <label for="targetAge">AGE DEMO</label>
+  <input type="text" name="targetAge" id="targetAge" value="<%= release.targetAge %>" required>
+
+  <label for="releaseDate">RELEASE DATE</label>
+  <input type="date" name="releaseDate" id="releaseDate" value="<%= new Date(release.releaseDate).toISOString().split('T')[0] %>" required>
+
+  <button type="submit" class="btn btn-save">Save Changes</button>
+</form>
+
+<a href="/releases" class="btn btn-back">Back to All Releases</a>
+
+<%- include("../partials/header.ejs") %>
+
 

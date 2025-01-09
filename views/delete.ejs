@@ -1,18 +1,13 @@
-<%- include('../partials/header') %>
+<%- include("../partials/header.ejs") %>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title><%= title %></title>
-</head>
-<body>
-  <h1>Delete Release</h1>
-  <p>Are you sure you want to delete "<%= release.title %>"?</p>
-  <form action="/releases/<%= release.id %>/delete" method="POST">
-    <button type="submit">Delete</button>
-  </form>
-  <a href="/releases">Cancel</a>
-</body>
-</html>
+<h1>Delete Release</h1>
 
-<%- include('../partials/header') %>
+<p>Are you sure you want to delete the release "<%= release.title %>"?</p>
+
+<form action="/releases/<%= release._id %>?_method=DELETE" method="POST">
+  <button type="submit" class="btn btn-delete">Yes, Delete</button>
+</form>
+
+<a href="/releases" class="btn btn-back">Cancel</a>
+
+<%- include("../partials/footer.ejs") %>
