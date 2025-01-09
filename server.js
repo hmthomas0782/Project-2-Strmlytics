@@ -57,11 +57,15 @@ app.use('/auth', require('./controllers/auth'));
 // user thanks to ensureSignedIn middleware
 app.use(require('./middleware/ensure-signed-in'));
 // Any controller/routes mounted below here will have
+
+
+
+
 // ALL routes protected by the ensureSignedIn middleware
 
 
 
-app.use('/releases', require('./controllers/releases'));
+
 
 app.listen(port,  () => {
   console.log(`The express app is ready on port ${port}!`);

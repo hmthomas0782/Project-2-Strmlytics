@@ -4,16 +4,16 @@ const Release = require("../models/Release");
 
 //GET ROUTES//
 
-// Index List All Releases
-router.get("/", async (req, res) => {
-  const releases = await Release.find();
-  res.render("releases/index", { releases });
-});
-
-// Show release deets
+// add release deets
 router.get("/:id", async (req, res) => {
   const release = await Release.findById(req.params.id);
   res.render("releases/show", { release });
+});
+
+// List All Releases
+router.get("/", async (req, res) => {
+  const releases = await Release.find();
+  res.render("releases/index", { release });
 });
 
 // Edit forms
@@ -28,6 +28,15 @@ router.get("/:id/delete", async (req, res) => {
   res.render("releases/delete", { release });
 });
 
+// GET /releases/new - Render form for creating a new release
+router.get('/new', (req, res) => {
+  res.render('releases/new.ejs', { title: 'Create New Release' });
+});
+
+//GET Route//
+
+
+
 //POST ROUTES //
 
 // Create a new release
@@ -41,7 +50,7 @@ router.post("/", async (req, res) => {
   res.redirect("/releases");
 });
 
-/* ------------------ PUT ROUTES ------------------ */
+//PUT ROUTES/
 
 // Update existing release
 router.put("/:id", async (req, res) => {
@@ -54,7 +63,7 @@ router.put("/:id", async (req, res) => {
   res.redirect("/releases");
 });
 
-/* - DELETE ROUTES ------------------ */
+//DELETE ROUTES/
 
 // Delete a Release
 router.delete("/:id", async (req, res) => {

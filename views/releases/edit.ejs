@@ -3,22 +3,14 @@
 <h1>Edit Release</h1>
 
 <form action="/releases/<%= release._id %>?_method=PUT" method="POST">
-  <label for="title">TITLE</label>
-  <input type="text" name="title" id="title" value="<%= release.title %>" required>
-
-  <label for="numStreams"># STREAMS</label>
-  <input type="number" name="numStreams" id="numStreams" value="<%= release.numStreams %>" required>
-
-  <label for="targetAge">AGE DEMO</label>
-  <input type="text" name="targetAge" id="targetAge" value="<%= release.targetAge %>" required>
-
-  <label for="releaseDate">RELEASE DATE</label>
-  <input type="date" name="releaseDate" id="releaseDate" value="<%= new Date(release.releaseDate).toISOString().split('T')[0] %>" required>
-
-  <button type="submit" class="btn btn-save">Save Changes</button>
+  <label>Title:</label>
+  <input type="text" name="title" value="<%= release.title %>" required>
+  <label>Description:</label>
+  <textarea name="description" required><%= release.description %></textarea>
+  <label>Release Date:</label>
+  <input type="date" name="releaseDate" value="<%= release.releaseDate.toISOString().split('T')[0] %>" required>
+  <button type="submit">Update</button>
 </form>
-
-<a href="/releases" class="btn btn-back">Back to All Releases</a>
 
 <%- include("../partials/header.ejs") %>
 

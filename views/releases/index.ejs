@@ -1,32 +1,29 @@
 <%- include("../partials/header.ejs") %>
 
-<h1>All Releases</h1>
-
-<a href="/releases/new" class="btn btn-add">✚ Add New Release</a>
-
-<div class="release-list">
-  <% if (releases && releases.length > 0) { %>
-    <% releases.forEach(function(release) { %>
-      <div class="release-card">
-        <h3 class="release-title">
-          <%= release.title %>
-        </h3>
-        <p><strong># Streams:</strong> <%= release.numStreams.toLocaleString() %></p>
-        <p><strong>Target Age Demo:</strong> <%= release.targetAge %></p>
-        <p><strong>Release Date:</strong> <%= new Date(release.releaseDate).toLocaleDateString() %></p>
-        <div class="release-actions">
-          <a href="/releases/<%= release._id %>" class="btn btn-view">View</a>
-          <a href="/releases/<%= release._id %>/edit" class="btn btn-edit">Edit</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+</head>
+<body>
+  <h1><%= title %></h1>
+  <ul>
+    <% if (releases.length > 0) { %>
+      <% releases.forEach(function(release) { %>
+        <li>
+          <a href="/releases/<%= release._id %>"><%= release.title %></a>
           <form action="/releases/<%= release._id %>?_method=DELETE" method="POST" style="display:inline;">
-            <button type="submit" class="btn btn-delete">Delete</button>
+            <button type="submit">Delete</button>
           </form>
-        </div>
-      </div>
-    <% }) %>
-  <% } else { %>
-    <p>No releases found. <a href="/releases/new">Add one now</a>.</p>
-  <% } %>
-</div>
+        </li>
+      <% }); %>
+    <% } else { %>
+      <p>No releases found. <a href="/releases/new">Create a new release</a>.</p>
+    <% } %>
+  </ul>
+</body>
+</html>
+
 
 <%- include("../partials/footer.ejs") %>
 
