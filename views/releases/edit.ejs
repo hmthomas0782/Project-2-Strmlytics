@@ -1,8 +1,5 @@
 <%- include('../partials/header') %>
 
-
-<div class="container">
-  <h1>Edit Release</h1>
   <form action="/releases/<%= release.id %>" method="POST">
     <label for="title">Title:</label>
     <input type="text" id="title" name="title" value="<%= release.title %>" required>
