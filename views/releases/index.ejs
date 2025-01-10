@@ -1,29 +1,9 @@
-<%- include("../partials/header.ejs") %>
+<h1>All Releases</h1>
+<ul>
+  <% releases.forEach((release) => { %>
+    <li><a href="/releases/<%= release._id %>"><%= release.title %></a></li>
+  <% }) %>
+</ul>
+<a href="/releases/new">Add New Release</a>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title><%= title %></title>
-</head>
-<body>
-  <h1><%= title %></h1>
-  <ul>
-    <% if (releases.length > 0) { %>
-      <% releases.forEach(function(release) { %>
-        <li>
-          <a href="/releases/<%= release._id %>"><%= release.title %></a>
-          <form action="/releases/<%= release._id %>?_method=DELETE" method="POST" style="display:inline;">
-            <button type="submit">Delete</button>
-          </form>
-        </li>
-      <% }); %>
-    <% } else { %>
-      <p>No releases found. <a href="/releases/new">Create a new release</a>.</p>
-    <% } %>
-  </ul>
-</body>
-</html>
-
-
-<%- include("../partials/footer.ejs") %>
 

@@ -28,7 +28,7 @@ router.get("/:id/delete", async (req, res) => {
   res.render("releases/delete", { release });
 });
 
-// GET /releases/new - Render form for creating a new release
+// GET /releases/new -form for creating a new release
 router.get('/new', (req, res) => {
   res.render('releases/new.ejs', { title: 'Create New Release' });
 });
