@@ -1,5 +1,6 @@
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(err.status || 500).send('Something went wrong!');
-  });
-  
+module.exports = (req, res, next) => {
+  if (!req.session.userId) {
+    return res.redirect("/auth/sign-in");
+  }
+  next();
+};

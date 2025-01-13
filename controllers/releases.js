@@ -1,77 +1,51 @@
 const express = require("express");
 const router = express.Router();
-const Release = require("../models/Release");
+const ensureSignedIn = require("../middleware/ensure-signed-in");
+const Release = require("../models/release");
 
-//GET ROUTES//
-
-// add release deets
-router.get("/:id", async (req, res) => {
-  const release = await Release.findById(req.params.id);
-  res.render("releases/show", { release });
-});
-
-// List All Releases
+// GET /releases (display all releases)
 router.get("/", async (req, res) => {
-  const releases = await Release.find();
-  res.render("releases/index", { release });
+  try {
+    const releases = await Release.find().sort({ createdAt: -1 });
+    res.render("releases/home", { releases });
+  } catch (error) {
+    console.error("Error fetching releases:", error);
+    res.status(500).send("Error fetching releases");
+  }
 });
 
-// Edit forms
-router.get("/:id/edit", async (req, res) => {
-  const release = await Release.findById(req.params.id);
-  res.render("releases/edit", { release });
+// GET /releases/new (render page to create a new release)
+router.get("/new", ensureSignedIn, (req, res) => {
+  res.render("releases/new");
 });
 
-// Delete ( Delete Confirmation)
-router.get("/:id/delete", async (req, res) => {
-  const release = await Release.findById(req.params.id);
-  res.render("releases/delete", { release });
+// POST /releases (create new release)
+router.post("/", ensureSignedIn, async (req, res) => {
+  try {
+    const { title, description, releaseDate } = req.body;
+    const newRelease = new Release({
+      title,
+      description,
+      releaseDate,
+    });
+
+    await newRelease.save();
+    res.redirect("/releases");
+  } catch (error) {
+    console.error("Error creating release:", error);
+    res.status(500).send("Error creating release");
+  }
 });
 
-// GET /releases/new -form for creating a new release
-router.get('/new', (req, res) => {
-  res.render('releases/new.ejs', { title: 'Create New Release' });
-});
-
-//GET Route//
-
-
-
-//POST ROUTES //
-
-// Create a new release
-router.post("/", async (req, res) => {
-  await new Release({
-    title: req.body.title,
-    numStreams: req.body.numStreams,
-    targetAge: req.body.targetAge,
-    releaseDate: req.body.releaseDate,
-  }).save();
-  res.redirect("/releases");
-});
-
-//PUT ROUTES/
-
-// Update existing release
-router.put("/:id", async (req, res) => {
-  await Release.findByIdAndUpdate(req.params.id, {
-    title: req.body.title,
-    numStreams: req.body.numStreams,
-    targetAge: req.body.targetAge,
-    releaseDate: req.body.releaseDate,
-  });
-  res.redirect("/releases");
-});
-
-//DELETE ROUTES/
-
-// Delete a Release
-router.delete("/:id", async (req, res) => {
-  await Release.findByIdAndDelete(req.params.id);
-  res.redirect("/releases");
+// DELETE /releases/:id (delete a release)
+router.post("/delete/:id", ensureSignedIn, async (req, res) => {
+  try {
+    await Release.findByIdAndDelete(req.params.id);
+    res.redirect("/releases");
+  } catch (error) {
+    console.error("Error deleting release:", error);
+    res.status(500).send("Error deleting release");
+  }
 });
 
 module.exports = router;
-
-
-

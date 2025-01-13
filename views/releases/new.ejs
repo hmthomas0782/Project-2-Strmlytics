@@ -1,17 +1,36 @@
 <%- include("../partials/header.ejs") %>
 
-<form action="/releases" method="POST">
+<!-- /views/releases/new.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create New Release</title>
+</head>
+<body>
+  <h1>Create a New Release</h1>
+  <form action="/releases" method="POST">
+    <label for="title">Title:</label>
+    <input type="text" name="title" required><br><br>
 
-    <label for="">TITLE</label>
-    <input type="text" name="title">
-    <label for=""># STREAMS</label>
-    <input type="number" name="numStreams">
-    <label for="">AGE DEMO</label>
-    <input type="text" name="targetAge">
-    <label for="">RELEASE DATE</label>
-    <input type="date" name="releaseDate">
-    <button type="submit">✚ ADD RELEASE</button>
+    <label for="description">Description:</label>
+    <textarea name="description" required></textarea><br><br>
 
-</form>
+    <label for="releaseDate">Release Date:</label>
+    <input type="date" name="releaseDate" required><br><br>
 
-<%- include("../partials/header.ejs") %>
+    <button type="submit">Create Release</button>
+  </form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

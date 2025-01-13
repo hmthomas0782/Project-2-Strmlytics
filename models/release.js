@@ -1,13 +1,24 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
+// Define the release schema
 const releaseSchema = new mongoose.Schema({
-  title: String,
-  artistId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-  numStreams: Number,
-  targetAge: String,
-  // add later gender: Array,
-  // add later location: Array,
-  releaseDate: Date,
-});
+  title: { type: String, required: true },
+  description: { type: String, required: true },
+  releaseDate: { type: Date, required: true },
+}, { timestamps: true }); // Automatically adds createdAt and updatedAt fields
 
-module.exports = mongoose.model("Release", releaseSchema);
+// Export the Release model
+module.exports = mongoose.model('Release', releaseSchema);
+
+
+
+
+
+
+
+
+
+
+
+
+

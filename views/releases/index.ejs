@@ -1,9 +1,42 @@
+<%- include("../partials/header.ejs") %>
+
 <h1>All Releases</h1>
+
 <ul>
   <% releases.forEach((release) => { %>
-    <li><a href="/releases/<%= release._id %>"><%= release.title %></a></li>
+    <li>
+      <a href="/releases/<%= release._id %>"><%= release.title %></a>
+      <a href="/releases/<%= release._id %>/edit">Edit</a>
+      <form action="/releases/<%= release._id %>?_method=DELETE" method="POST" style="display: inline;">
+        <button type="submit">Delete</button>
+      </form>
+    </li>
   <% }) %>
 </ul>
+
 <a href="/releases/new">Add New Release</a>
+
+<%- include("../partials/footer.ejs") %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

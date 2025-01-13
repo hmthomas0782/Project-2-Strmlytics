@@ -1,113 +1,26 @@
+<!-- /views/releases/home.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>strmltyics | Welcome</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-            background-color: #000;
-            color: #fff;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .logo img {
-            width: 50px;
-        }
-
-        .logo h1 {
-            font-size: 2.5rem;
-            margin: 0;
-        }
-
-        .cta {
-            margin-top: 20px;
-        }
-
-        .cta button {
-            background-color: #007BFF;
-            border: none;
-            color: white;
-            padding: 15px 30px;
-            font-size: 1rem;
-            font-weight: 700;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .cta button:hover {
-            background-color: #0056b3;
-        }
-
-        .signup {
-            margin-top: 40px;
-            color: #ccc;
-        }
-
-        .signup a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-
-        .signup a:hover {
-            text-decoration: underline;
-        }
-
-        .learn-more {
-            margin-top: 10px;
-            color: #007BFF;
-            cursor: pointer;
-        }
-
-        .learn-more:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Releases</title>
 </head>
 <body>
-  <%- include('./partials/header') %>
-    <div class="container">
-        <div class="logo">
-            <img src="strymlytics-logo.png" alt="Strymlytics Logo">
-            <h1>STRMYLYTICS</h1>
-        </div>
-        <h2>Welcome to STRMLYTICS. </h2>
-        <p>Track your releases and dive into the insights you need.</p>
+  <h1>All Releases</h1>
+  <ul>
+    <% releases.forEach(release => { %>
+      <li>
+        <h2><%= release.title %></h2>
+        <p><%= release.description %></p>
+        <p>Release Date: <%= release.releaseDate.toDateString() %></p>
+        <form action="/releases/delete/<%= release._id %>" method="POST">
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
 
-        <div class="cta">
-            <a href="/auth/sign-up">
-                <button>Let's Get Started</button>
-            </a>
-        </div>
-
-        <div class="signup">
-            Already Registered? <a href="/auth/sign-in">Login</a>
-        </div>
-
-        <div class="learn-more">
-            Learn More
-        </div>
-    </div>
+  <a href="/releases/new">Add a New Release</a>
 </body>
-<%- include('./partials/footer') %>
 </html>

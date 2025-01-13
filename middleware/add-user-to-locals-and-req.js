@@ -1,9 +1,5 @@
-const User = require('../models/user');
-
-module.exports = async function (req, res, next) {
-  // You can now access the logged in user's document in every controller function
-  req.user = req.session.user_id ? await User.findById(req.session.user_id) : null;
-  // Add to locals object so that use can be accessed in the templates
-  res.locals.user = req.user;
+// /middleware/add-user-to-locals.js
+module.exports = (req, res, next) => {
+  res.locals.currentUser = req.session ? req.session.userId || null : null;
   next();
 };

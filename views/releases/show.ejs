@@ -1,16 +1,27 @@
 <%- include("../partials/header.ejs") %>
 
-<h1>Release Details</h1>
+<h1><%= release.title %></h1>
+<p>Artist: <%= release.artist %></p>
+<p>Release Date: <%= release.releaseDate.toLocaleDateString() %></p>
 
-<h2><%= release.title %></h2>
-<p><strong># Streams:</strong> <%= release.numStreams.toLocaleString() %></p>
-<p><strong>Target Age Demo:</strong> <%= release.targetAge %></p>
-<p><strong>Release Date:</strong> <%= new Date(release.releaseDate).toLocaleDateString() %></p>
-
-<a href="/releases/<%= release._id %>/edit" class="btn btn-edit">Edit</a>
-<form action="/releases/<%= release._id %>?_method=DELETE" method="POST" style="display:inline;">
-  <button type="submit" class="btn btn-delete">Delete</button>
+<a href="/releases/<%= release._id %>/edit">Edit</a>
+<form action="/releases/<%= release._id %>?_method=DELETE" method="POST" style="display: inline;">
+  <button type="submit">Delete</button>
 </form>
-<a href="/releases" class="btn btn-back">Back to All Releases</a>
+<a href="/releases">Back to All Releases</a>
 
 <%- include("../partials/footer.ejs") %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
