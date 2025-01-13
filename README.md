@@ -30,7 +30,7 @@ By consolidating data from multiple platforms into one cohesive dashboard, Strym
 ## Installation
 
 ### Prerequisites
-- [Node.js](https://nodejs.org/) (v14 or later)
+- [Node.js](https://nodejs.org/)
 - [MongoDB](https://www.mongodb.com/)
 
 ### Steps
@@ -55,7 +55,6 @@ By consolidating data from multiple platforms into one cohesive dashboard, Strym
      ```env
      PORT=3000
      MONGO_URI=your-mongodb-connection-string
-     JWT_SECRET=your-jwt-secret
      ```
 
 5. Start the server:
